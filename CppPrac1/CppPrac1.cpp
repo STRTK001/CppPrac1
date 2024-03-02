@@ -13,24 +13,26 @@ void function1(int);
 void function2(int*);
 
 void part1();
-void prac2();
+void part2();
 
+/* function to read number from standard input (keyboard) */ 
+void getNumber(int*);
 /* function to calculate the sum of two numbers */
-int calculateSum(int, int);
+void calculateSum(int, int, int*);
 /* function to display details to the screen */
 void displayDetails();
 
 int main() 
 {
 	std::cout << "__ PART 1 __ \n";
-	prac1();
+	part1();
 	std::cout << "__ PART 2 __ \n";
-	prac2();
+	part2();
 
 	return 0;
 }
 
-void prac1()
+void part1()
 {
 	int number = 10;
 	/* C1. display the contents of number to the screen */
@@ -79,7 +81,7 @@ void function2(int* numberPtr)
 	std::cout << "8. The number ptr value after incremented is " << *numberPtr << std::endl;
 }
 
-void prac2()
+void part2()
 {
 	int num1 = 0; /* first number to be entered by user */
 	int num2 = 0; /* second number to be entered by user */
@@ -87,32 +89,33 @@ void prac2()
 	displayDetails();
 	/* prompt for and read first number */
 	std::cout << "Please enter first number : ";
-	num1 = getNumber();
+	getNumber(&num1);
 	/* prompt for and read second number */
 	std::cout << "Please enter second number: ";
-	num2 = getNumber();
+	getNumber(&num2);
 	/* add two numbers together and display to screen */
-	sum = calculateSum(num1, num2);
+	calculateSum(num1, num2, &sum);
 	std::cout << std::endl << "\nSum of " << num1 << " and " << num2 << " is: " <<
 	sum << std::endl << std::endl;
 }
 
 /* function to read number from standard input (keyboard) */
-int getNumber() 
+void getNumber(int* numPtr) 
 {
 	int num;
 	std::cin >> num;
-	return num;
+
+	*numPtr = num;
 }
 /* function to calculate the sum of two numbers */
-int calculateSum(int number1, int number2) 
+void calculateSum(int number1, int number2, int* sumPtr) 
 {
-	return number1 + number2;
+	*sumPtr = number1 + number2;
 }
 /* function to display details to the screen */
 void displayDetails() 
 {
-	std::cout << "Author : Your Name" << std::endl;
-	std::cout << "Stud ID : Your Student Id" << std::endl;
-	std::cout << "Email : Your Email" << std::endl;
+	std::cout << "Author : Travis Strawbridge" << std::endl;
+	std::cout << "Stud ID : 110 something" << std::endl;
+	std::cout << "Email : strtk001@mymail.unisa.edu.au" << std::endl;
 }
